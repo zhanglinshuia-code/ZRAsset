@@ -42,3 +42,9 @@ https://github.com/zhanglinshuia-code/ZRAsset.git
 | Documentation~ | 安装、使用步骤、API 与配置参考 |
 
 Built-in 构建后端可独立使用；SBP、HybridCLR、UniTask 和其他 SDK 按需安装。可选集成的依赖和设置见对应 Samples 的 README。
+
+## 致谢
+
+感谢 **YooAsset** 项目及其作者和贡献者的开源分享，为 Unity 资源管理提供了宝贵的设计思路与实践参考。
+
+- 项目仓库：[tuyoogame/YooAsset](https://github.com/tuyoogame/YooAsset)
