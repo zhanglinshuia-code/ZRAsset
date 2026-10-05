@@ -8,6 +8,7 @@
     "com.unity.modules.assetbundle": "1.0.0",
     "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
     "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.terrain": "1.0.0",
     "com.unity.modules.terrainphysics": "1.0.0",
@@ -16,7 +17,7 @@
   "samples": [
     {
       "displayName": "Core examples",
-      "description": "Getting started, loading, download and startup examples.",
+      "description": "Ready-to-run scene, resource build configuration, loading and startup examples.",
       "path": "Samples~/Core"
     },
     {
@@ -45,9 +46,10 @@
       "path": "Samples~/MiniGame"
     }
   ],
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/zhanglinshuia-code/ZRAsset.git"
   },
-  "documentationUrl": "https://github.com/zhanglinshuia-code/ZRAsset/blob/main/Documentation~/index.md"
+  "documentationUrl": "https://github.com/zhanglinshuia-code/ZRAsset/blob/v0.35.0/Documentation~/index.md"
 }

@@ -4,6 +4,16 @@
 
 本章建立文本资源 → 命名包 → 首包 → Scope 加载 → 释放的最小闭环，不需要 HTTP 服务和 HybridCLR。以下以 Windows Editor / StandaloneWindows64 为例。
 
+## 先运行随包示例
+
+1. 在 Package Manager 中选择 ZRAsset，从 Samples 导入 **Core examples**。
+2. 执行 **Tools → ZRAsset → 示例 → 构建并打开快速入门**。菜单会按当前目标平台构建、复制首包并打开示例场景。
+3. 点击 Play。场景和 Console 会显示 `AssetBundle 加载成功` / `Hello ZRAsset!`。
+
+示例使用独立包名 `zrasset-quickstart`，包含 [文本资源](../../Samples~/Core/QuickStart/Greeting.txt)、[构建配置](../../Samples~/Core/QuickStart/QuickStartBuildConfig.asset)和[场景](../../Samples~/Core/QuickStart/QuickStart.unity)。切换目标平台后重新执行示例菜单，生成匹配平台的 Bundle。第一次构建需要等待 Unity 完成。
+
+下面介绍如何手动创建自己的 `demo` 包。
+
 ## 创建资源和配置
 
 1. 创建 `Assets/GameContent/Greeting.txt`，写入 `Hello ZRAsset`。

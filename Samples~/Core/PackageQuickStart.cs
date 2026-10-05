@@ -11,6 +11,10 @@ namespace ZRAsset.Samples
         [SerializeField] private string m_packageName = "demo";
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "Unity assigns serialized fields when loading assets.")]
         [SerializeField] private string m_address = "demo/greeting";
+        [SerializeField] private bool m_showStatus = true;
+        private string m_status = "正在初始化资源包…";
+        public bool IsReady { get; private set; }
+        public string Status => m_status;
         private readonly CancellationTokenSource m_lifetime = new();
         private ResourcePackage m_package;
         private ResourceScope m_scope;
@@ -25,7 +29,10 @@ namespace ZRAsset.Samples
                 await m_startup;
             }
             catch (OperationCanceledException) { }
-            catch (Exception error) { Debug.LogException(error, this); }
+            catch (Exception error) {
+                m_status = "加载失败：" + error.Message + "\n请先执行示例的构建并打开菜单。";
+                Debug.LogException(error, this);
+            }
             finally {
                 if (m_destroyed || m_startup == null || m_startup.IsFaulted || m_startup.IsCanceled) {
                     await CloseAsync();
@@ -40,7 +47,14 @@ namespace ZRAsset.Samples
             m_lifetime.Token.ThrowIfCancellationRequested();
             m_scope = m_package.CreateScope("quick-start", cancellationToken: m_lifetime.Token);
             TextAsset text = await m_scope.LoadAsync<TextAsset>(m_address, m_lifetime.Token);
+            IsReady = true;
+            m_status = "AssetBundle 加载成功\n\n" + text.text;
             Debug.Log("ZRAsset 加载成功：" + text.text, this);
+        }
+
+        private void OnGUI()
+        {
+            if (m_showStatus) { GUI.Label(new Rect(24, 24, Screen.width - 48, 160), m_status); }
         }
 
         private void Update()

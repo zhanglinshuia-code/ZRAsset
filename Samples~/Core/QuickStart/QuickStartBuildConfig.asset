@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7863b7329a9b3df45b504ddf586ca757, type: 3}
+  m_Name: QuickStartBuildConfig
+  m_EditorClassIdentifier: ZRAsset.Editor::ZRAsset.Editor.BundleBuildConfig
+  PackageName: zrasset-quickstart
+  PackageVersion: 1.0
+  BuildBackend: 0
+  UseAssetDependencies: 0
+  GenerateLinkXml: 1
+  StripUnityVersion: 0
+  DisableWriteTypeTree: 0
+  CacheServerHost: 
+  CacheServerPort: 8126
+  ForceRebuild: 0
+  Compression: 0
+  EncryptionKeyId: 
+  ReuseEncryptedArtifacts: 1
+  ExportBinaryManifest: 0
+  ExportEncodedManifest: 0
+  ManifestEncryptionKeyId: 
+  QualityPolicy: {fileID: 0}
+  ValidateAssetPaths: 0
+  CollectShadersSeparately: 0
+  ShaderVariants: {fileID: 0}
+  GlobalCollectionRule: {fileID: 0}
+  BuildExtensions: []
+  Groups: []
+  Entries:
+  - CollectorRole: 0
+    CollectionGroup: 
+    Disabled: 0
+    Address: demo/greeting
+    Asset: {fileID: 4900000, guid: ec64f1f75e170d5459734ef83d4e868d, type: 3}
+    BundleName: greeting.bundle
+    FileType: 0
+    Tags: []
+  Rules: []
+  ExtractSharedDependencies: 1

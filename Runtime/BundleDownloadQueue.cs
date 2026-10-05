@@ -115,6 +115,7 @@ namespace ZRAsset
             public long Sequence, Received;
             public long StartedTimestamp;
             public int Attempt, Waiters;
+            public int PendingIndex = -1;
             public bool Finished;
             public bool Started, HoldsSlot;
             public OperationCompletionSource<bool> Resume;
@@ -123,6 +124,84 @@ namespace ZRAsset
             public BundleDownloadState State;
             public readonly CancellationTokenSource Cancellation = new();
             public readonly OperationCompletionSource<string> Completion = new();
+        }
+
+        // 按优先级和首次入队顺序排序；索引支持取消及共享请求的优先级提升。
+        private sealed class PendingQueue
+        {
+            private readonly List<Job> m_items = new();
+            public int Count => m_items.Count;
+
+            public void Add(Job job)
+            {
+                if (job.PendingIndex >= 0) { throw new InvalidOperationException("任务已在等待队列中。"); }
+                job.PendingIndex = m_items.Count;
+                m_items.Add(job);
+                MoveUp(job.PendingIndex);
+            }
+
+            public Job Pop()
+            {
+                Job first = m_items[0];
+                Remove(first);
+                return first;
+            }
+
+            public bool Remove(Job job)
+            {
+                int index = job.PendingIndex;
+                if (index < 0) { return false; }
+                Job last = m_items[m_items.Count - 1];
+                m_items.RemoveAt(m_items.Count - 1);
+                job.PendingIndex = -1;
+                if (index < m_items.Count) {
+                    m_items[index] = last;
+                    last.PendingIndex = index;
+                    if (index > 0 && Before(last, m_items[(index - 1) / 2])) { MoveUp(index); }
+                    else { MoveDown(index); }
+                }
+                return true;
+            }
+
+            public void Promote(Job job)
+            {
+                if (job.PendingIndex >= 0) { MoveUp(job.PendingIndex); }
+            }
+
+            private static bool Before(Job left, Job right)
+            {
+                return left.Priority < right.Priority || (left.Priority == right.Priority && left.Sequence < right.Sequence);
+            }
+
+            private void MoveUp(int index)
+            {
+                while (index > 0) {
+                    int parent = (index - 1) / 2;
+                    if (!Before(m_items[index], m_items[parent])) { break; }
+                    Swap(index, parent);
+                    index = parent;
+                }
+            }
+
+            private void MoveDown(int index)
+            {
+                while (index * 2 + 1 < m_items.Count) {
+                    int child = index * 2 + 1;
+                    if (child + 1 < m_items.Count && Before(m_items[child + 1], m_items[child])) { child++; }
+                    if (!Before(m_items[child], m_items[index])) { break; }
+                    Swap(index, child);
+                    index = child;
+                }
+            }
+
+            private void Swap(int left, int right)
+            {
+                Job job = m_items[left];
+                m_items[left] = m_items[right];
+                m_items[right] = job;
+                m_items[left].PendingIndex = left;
+                m_items[right].PendingIndex = right;
+            }
         }
 
         [Serializable]
@@ -138,7 +217,7 @@ namespace ZRAsset
             public long Size, Offset, Length;
         }
 
-        private readonly List<Job> m_pending = new();
+        private readonly PendingQueue m_pending = new();
         private readonly Dictionary<string, Job> m_jobs = new(DownloadStorage.PathComparer);
         private readonly Dictionary<string, BundleDownloadProgress> m_snapshots = new(DownloadStorage.PathComparer);
         private readonly BundleDownloadOptions m_options;
@@ -184,6 +263,16 @@ namespace ZRAsset
 
         public IReadOnlyList<BundleDownloadProgress> GetProgress()
         { CheckThread(); return m_snapshots.Values.ToArray(); }
+
+        /// <summary>清空并填充调用方列表；容量足够时复用缓冲区。必须在队列所属线程调用。</summary>
+        public int CopyProgressTo(List<BundleDownloadProgress> destination)
+        {
+            CheckThread();
+            if (destination == null) { throw new ArgumentNullException(nameof(destination)); }
+            destination.Clear();
+            destination.AddRange(m_snapshots.Values);
+            return destination.Count;
+        }
 
         // 只查询在途工作，不把之前的成功快照误计为本次任务组的网络下载。
         internal bool TryGetActiveProgress(BundleInfo info, out BundleDownloadProgress progress)
@@ -234,6 +323,7 @@ namespace ZRAsset
                 }
                 if ((int)priority < (int)job.Priority) {
                     job.Priority = priority;
+                    m_pending.Promote(job);
                 }
 
                 job.Waiters++;
@@ -370,16 +460,7 @@ namespace ZRAsset
         {
             CheckThread();
             while (!m_disposed && !m_paused && m_active < m_options.MaxConcurrentDownloads && m_pending.Count > 0) {
-                var best = 0;
-                for (var i = 1; i < m_pending.Count; i++) {
-                    if (m_pending[i].Priority < m_pending[best].Priority ||
-                        (m_pending[i].Priority == m_pending[best].Priority && m_pending[i].Sequence < m_pending[best].Sequence)) {
-                        best = i;
-                    }
-                }
-
-                Job next = m_pending[best];
-                m_pending.RemoveAt(best);
+                Job next = m_pending.Pop();
                 m_active++;
                 next.HoldsSlot = true;
                 if (next.Started) { next.Resume.TrySetResult(true); }

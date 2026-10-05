@@ -45,7 +45,7 @@ ConfigureUpdatesAsync 恢复版本状态但不等于完成资源加载。已有�
 
 BundleDownloadQueue 支持共享文件任务、优先级、暂停、恢复、重试和字节进度。Pause 阻止启动新请求，已发出的请求继续完成。重试退避会归还下载名额，但仍保留目标文件写入锁，防止另一写入者污染断点。
 
-UI 优先使用进度事件或低频快照。GetProgress 每次构造数组，不适合在大队列下无条件每帧调用。中途取消后保留的断点仍需验证响应范围、验证器和内容身份，不能直接信任同名 .part 文件。
+UI 优先使用进度事件或低频快照。`GetProgress()` 返回独立快照数组；需要高频获取完整进度时，可以复用列表调用 `CopyProgressTo`。列表容量足够后不再为结果创建新数组。中途取消后保留的断点仍需验证响应范围、验证器和内容身份，不能直接信任同名 .part 文件。
 
 ## 标签与选择性准备
 
@@ -66,3 +66,22 @@ ResourceSelection 可按地址、标签等选择内容，准备计划会包含�
 离线应仅使用已验证缓存、首包和已安装平台内容。缺文件时失败或按明确业务策略回退，不能悄悄发网络请求。首次离线安装、缓存损坏、升级后离线恢复是不同场景，生产接入应分别测试。
 
 
+
+## 复用下载进度列表
+
+在 UI 控制器中保留同一个列表，并在 Unity 主线程刷新。每次调用会清空列表、写入当前快照并返回条目数；不要把这个可复用列表直接交给需要长期保存历史快照的对象。
+
+```csharp
+private readonly System.Collections.Generic.List<ZRAsset.BundleDownloadProgress> progress = new();
+
+public void RefreshProgress(ZRAsset.BundleDownloadQueue queue)
+{
+    int count = queue.CopyProgressTo(progress);
+    for (int i = 0; i < count; i++)
+    {
+        // 用 progress[i].BundleName、ReceivedBytes、TotalBytes 和 State 更新 UI。
+    }
+}
+```
+
+首次使用或条目数量超过现有容量时，列表仍需要扩容。只需要单次独立快照的调用方可继续使用 `GetProgress()`。

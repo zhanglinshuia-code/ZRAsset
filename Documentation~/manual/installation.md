@@ -11,10 +11,12 @@
 在 Package Manager 选择 **Install package from git URL**（或 **Add package from git URL**），输入：
 
 ```text
-https://github.com/zhanglinshuia-code/ZRAsset.git
+https://github.com/zhanglinshuia-code/ZRAsset.git#v0.35.0
 ```
 
 系统需要安装 Git。也可先克隆仓库，然后选择 **Install package from disk**，指定克隆目录中的 `package.json`。包安装完成后，从 Samples 导入 **Core examples**，其他集成按需导入。
+
+离线安装可从 [v0.35.0 Release](https://github.com/zhanglinshuia-code/ZRAsset/releases/tag/v0.35.0) 下载 `com.zrasset.core-0.35.0.tgz`，选择 **Install package from tarball** 并指定该文件。此方式不需要 Git，但 Unity 仍需具备包声明的依赖。
 
 不要直接修改 `Library/PackageCache`。需要定制时使用自己的克隆目录或嵌入包；同一工程只保留一套 ZRAsset，避免重复程序集。
 

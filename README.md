@@ -7,16 +7,20 @@ Unity 6 AssetBundle 资源管理系统，提供资源收集与构建、异步加
 在 Unity Package Manager 中选择 **Install package from git URL**（部分版本显示 **Add package from git URL**），输入：
 
 ```text
-https://github.com/zhanglinshuia-code/ZRAsset.git
+https://github.com/zhanglinshuia-code/ZRAsset.git#v0.35.0
 ```
 
 需要 Unity 6000.0 或更新版本，推荐使用 6000.3.11f1。系统需安装 Git。也可克隆仓库后通过 **Install package from disk** 选择根目录的 `package.json`。
 
+也可从 [v0.35.0 Release](https://github.com/zhanglinshuia-code/ZRAsset/releases/tag/v0.35.0) 下载 `com.zrasset.core-0.35.0.tgz`，在 Package Manager 中通过 **Install package from tarball** 安装。
+
 ## 开始使用
 
 1. 阅读[安装与依赖](Documentation~/manual/installation.md)。
-2. 按[快速入门](Documentation~/manual/quick-start.md)创建资源、构建 AssetBundle 并复制首包。
-3. 在 Package Manager 的 Samples 中导入 **Core examples**，运行 `PackageQuickStart`。
+2. 在 Package Manager 的 Samples 中导入 **Core examples**。
+3. 执行 **Tools → ZRAsset → 示例 → 构建并打开快速入门**，点击 Play，场景中会显示真实 AssetBundle 的加载结果。
+
+示例已包含文本资源、构建配置和场景。手动配置和接入自己的资源见[快速入门](Documentation~/manual/quick-start.md)。
 
 推荐使用 `ResourcePackage` 管理命名包、`ResourceScope` 管理界面或场景的资源所有权。资源 API 在 Unity 主线程调用，异步操作支持 await 和协程。
 
@@ -42,6 +46,10 @@ https://github.com/zhanglinshuia-code/ZRAsset.git
 | Documentation~ | 安装、使用步骤、API 与配置参考 |
 
 Built-in 构建后端可独立使用；SBP、HybridCLR、UniTask 和其他 SDK 按需安装。可选集成的依赖和设置见对应 Samples 的 README。
+
+## 许可证
+
+Copyright 2026 zhanglinshuia-code。项目使用 [Apache License 2.0](LICENSE)。
 
 ## 致谢
 

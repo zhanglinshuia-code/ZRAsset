@@ -63,7 +63,7 @@ namespace ZRAsset.Samples
         private void OnGUI()
         {
             GUILayout.BeginArea(new Rect(15, 15, 740, 220), GUI.skin.box);
-            GUILayout.Label("ZRAsset V4 下载与缓存演示");
+            GUILayout.Label("ZRAsset 下载与缓存演示");
             GUILayout.Label(m_status);
             GUI.enabled = m_resources != null && !m_busy;
             if (GUILayout.Button("预下载并加载文本资源")) {

@@ -1,0 +1,2 @@
+Hello ZRAsset!
+AssetBundle loading is ready.

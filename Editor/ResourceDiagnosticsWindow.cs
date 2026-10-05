@@ -19,7 +19,7 @@ namespace ZRAsset.Editor
         private bool m_autoRefresh;
         private double m_nextRefresh;
 
-        [MenuItem("Tools/ZRAsset/运行时资源诊断 (V8)")]
+        [MenuItem("Tools/ZRAsset/运行时资源诊断")]
         public static void Open()
         {
             ResourceDiagnosticsWindow window = GetWindow<ResourceDiagnosticsWindow>("ZRAsset 资源诊断");
