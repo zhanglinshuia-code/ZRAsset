@@ -1,0 +1,7 @@
+{
+  "name": "ZRAsset.Integrations.UniTask",
+  "references": [
+    "ZRAsset.Runtime",
+    "UniTask"
+  ]
+}

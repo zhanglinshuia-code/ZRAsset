@@ -1,0 +1,53 @@
+{
+  "name": "com.zrasset.core",
+  "version": "0.35.0",
+  "displayName": "ZRAsset",
+  "description": "AssetBundle, raw file, package update and lifetime management for Unity 6.",
+  "unity": "6000.0",
+  "dependencies": {
+    "com.unity.modules.assetbundle": "1.0.0",
+    "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.terrain": "1.0.0",
+    "com.unity.modules.terrainphysics": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0"
+  },
+  "samples": [
+    {
+      "displayName": "Core examples",
+      "description": "Getting started, loading, download and startup examples.",
+      "path": "Samples~/Core"
+    },
+    {
+      "displayName": "UI Toolkit",
+      "description": "VisualTreeAsset with explicit view and resource ownership.",
+      "path": "Samples~/UIToolkit"
+    },
+    {
+      "displayName": "UniTask",
+      "description": "Optional UniTask 2.x bridge; install UniTask before importing.",
+      "path": "Samples~/UniTask"
+    },
+    {
+      "displayName": "FairyGUI",
+      "description": "Package lease and optional concrete FairyGUI SDK binding.",
+      "path": "Samples~/FairyGUI"
+    },
+    {
+      "displayName": "Wwise",
+      "description": "SoundBank lease and optional Wwise 2024 async MemoryCopy binding.",
+      "path": "Samples~/Wwise"
+    },
+    {
+      "displayName": "Mini Game SDK",
+      "description": "Optional WeChat SDK bundle creation, extraction, preload and unload adapter.",
+      "path": "Samples~/MiniGame"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhanglinshuia-code/ZRAsset.git"
+  },
+  "documentationUrl": "https://github.com/zhanglinshuia-code/ZRAsset/blob/main/Documentation~/index.md"
+}

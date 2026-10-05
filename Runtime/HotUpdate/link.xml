@@ -1,0 +1,8 @@
+<linker>
+  <!-- 可选依赖：未安装 HybridCLR 时不会产生程序集引用；安装后保留反射调用的 API。 -->
+  <assembly fullname="HybridCLR.Runtime" ignoreIfMissing="1">
+    <type fullname="HybridCLR.RuntimeApi" preserve="all" />
+    <type fullname="HybridCLR.HomologousImageMode" preserve="all" />
+    <type fullname="HybridCLR.LoadImageErrorCode" preserve="all" />
+  </assembly>
+</linker>

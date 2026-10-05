@@ -1,0 +1,10 @@
+{
+  "name": "ZRAsset.Editor",
+  "rootNamespace": "ZRAsset.Editor",
+  "references": [
+    "ZRAsset.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "ZRAsset.Integrations.MiniGame",
+  "references": [
+    "ZRAsset.Runtime"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "ZRAsset.Integrations.FairyGUI",
+  "references": [
+    "ZRAsset.Runtime"
+  ]
+}

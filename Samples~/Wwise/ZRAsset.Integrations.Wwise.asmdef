@@ -1,0 +1,6 @@
+{
+  "name": "ZRAsset.Integrations.Wwise",
+  "references": [
+    "ZRAsset.Runtime"
+  ]
+}

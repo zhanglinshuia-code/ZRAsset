@@ -1,0 +1,22 @@
+{
+  "name": "ZRAsset.SBP.Editor",
+  "references": [
+    "ZRAsset.Runtime",
+    "ZRAsset.Editor",
+    "Unity.ScriptableBuildPipeline.Editor",
+    "Unity.ScriptableBuildPipeline"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "defineConstraints": [
+    "ZRASSET_SBP"
+  ],
+  "versionDefines": [
+    {
+      "name": "com.unity.scriptablebuildpipeline",
+      "expression": "2.6.1",
+      "define": "ZRASSET_SBP"
+    }
+  ]
+}

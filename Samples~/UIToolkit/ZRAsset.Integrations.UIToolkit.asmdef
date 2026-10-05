@@ -1,0 +1,6 @@
+{
+  "name": "ZRAsset.Integrations.UIToolkit",
+  "references": [
+    "ZRAsset.Runtime"
+  ]
+}
