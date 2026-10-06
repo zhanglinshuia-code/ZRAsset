@@ -49,10 +49,6 @@ Git URL 中的 `#v0.35.0` 是版本标签，请完整复制上方代码块中的
 
 Built-in 构建后端可独立使用；SBP、HybridCLR、UniTask 和其他 SDK 按需安装。可选集成的依赖和设置见对应 Samples 的 README。
 
-## 交流与反馈
-
-ZRAsset QQ 交流群：**815665633**。
-
 ## 许可证
 
 Copyright 2026 zhanglinshuia-code。项目使用 [Apache License 2.0](LICENSE)。
