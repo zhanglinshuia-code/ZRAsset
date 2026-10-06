@@ -12,7 +12,9 @@ https://github.com/zhanglinshuia-code/ZRAsset.git#v0.35.0
 
 需要 Unity 6000.0 或更新版本，推荐使用 6000.3.11f1。系统需安装 Git。也可克隆仓库后通过 **Install package from disk** 选择根目录的 `package.json`。
 
-也可从 [v0.35.0 Release](https://github.com/zhanglinshuia-code/ZRAsset/releases/tag/v0.35.0) 下载 `com.zrasset.core-0.35.0.tgz`，在 Package Manager 中通过 **Install package from tarball** 安装。
+也可从 [v0.35.0 Release](https://github.com/zhanglinshuia-code/ZRAsset/releases/tag/v0.35.0) 下载 [com.zrasset.core-0.35.0.tgz](https://github.com/zhanglinshuia-code/ZRAsset/releases/download/v0.35.0/com.zrasset.core-0.35.0.tgz)，在 Package Manager 中通过 **Install package from tarball** 安装。
+
+Git URL 中的 `#v0.35.0` 是版本标签，请完整复制上方代码块中的地址。若安装失败，先确认命令行执行 `git --version` 正常且可以访问 GitHub；安装 Git 后需重启 Unity 和 Unity Hub。网络无法连接 GitHub 时，可在能访问 GitHub 的设备下载上述 `.tgz`，再复制到本机安装。
 
 ## 开始使用
 
