@@ -11,7 +11,7 @@ namespace ZRAsset.Samples.Editor
         private const string ConfigGuid = "13c5cefc56c625f4dadf4390896246a7";
         private const string SceneGuid = "0629d946b66350444bc01d603ea71bc6";
 
-        [MenuItem("Tools/ZRAsset/示例/构建并打开快速入门")]
+        [MenuItem("ZRAsset/示例/构建并打开快速入门")]
         public static void BuildAndOpen()
         {
             if (EditorApplication.isPlayingOrWillChangePlaymode) {

@@ -7,7 +7,7 @@
 ## 先运行随包示例
 
 1. 在 Package Manager 中选择 ZRAsset，从 Samples 导入 **Core examples**。
-2. 执行 **Tools → ZRAsset → 示例 → 构建并打开快速入门**。菜单会按当前目标平台构建、复制首包并打开示例场景。
+2. 执行 **ZRAsset → 示例 → 构建并打开快速入门**。菜单会按当前目标平台构建、复制首包并打开示例场景。
 3. 点击 Play。场景和 Console 会显示 `AssetBundle 加载成功` / `Hello ZRAsset!`。
 
 示例使用独立包名 `zrasset-quickstart`，包含 [文本资源](../../Samples~/Core/QuickStart/Greeting.txt)、[构建配置](../../Samples~/Core/QuickStart/QuickStartBuildConfig.asset)和[场景](../../Samples~/Core/QuickStart/QuickStart.unity)。切换目标平台后重新执行示例菜单，生成匹配平台的 Bundle。第一次构建需要等待 Unity 完成。
@@ -25,9 +25,9 @@
 
 ## 构建和首包
 
-选中配置执行 **Tools → ZRAsset → 构建所选资源配置**。默认输出 `Build/ZRAsset/StandaloneWindows64/Packages/demo/1.0/`。
+选中配置执行 **ZRAsset → 构建所选资源配置**。默认输出 `Build/ZRAsset/StandaloneWindows64/Packages/demo/1.0/`。
 
-保持选中，执行 **Tools → ZRAsset → 拷贝当前构建到首包目录**。首包位于 `Assets/StreamingAssets/ZRAsset/Packages/demo/`，包含清单和其引用文件。资源版本写在清单中，首包目录不再追加版本层。不要只复制 Bundle，也不要把上层 Build 目录当作初始化根。
+保持选中，执行 **ZRAsset → 拷贝当前构建到首包目录**。首包位于 `Assets/StreamingAssets/ZRAsset/Packages/demo/`，包含清单和其引用文件。资源版本写在清单中，首包目录不再追加版本层。不要只复制 Bundle，也不要把上层 Build 目录当作初始化根。
 
 ## 运行示例
 

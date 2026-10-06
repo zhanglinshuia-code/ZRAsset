@@ -53,7 +53,7 @@ namespace ZRAsset.Editor
                 throw new InvalidOperationException("输出目录属于其他 Package，不能覆盖：" + directory);
             }
         }
-        [MenuItem("Tools/ZRAsset/构建所选资源配置")]
+        [MenuItem("ZRAsset/构建所选资源配置")]
         public static void BuildSelected()
         {
             var config = Selection.activeObject as BundleBuildConfig;
@@ -66,7 +66,7 @@ namespace ZRAsset.Editor
             Debug.Log($"ZRAsset 构建完成：{output}");
         }
 
-        [MenuItem("Tools/ZRAsset/拷贝当前构建到首包目录")]
+        [MenuItem("ZRAsset/拷贝当前构建到首包目录")]
         public static void CopyCurrentBuild()
         {
             BuildTarget target = EditorUserBuildSettings.activeBuildTarget;

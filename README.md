@@ -20,7 +20,7 @@ Git URL 中的 `#v0.35.0` 是版本标签，请完整复制上方代码块中的
 
 1. 阅读[安装与依赖](Documentation~/manual/installation.md)。
 2. 在 Package Manager 的 Samples 中导入 **Core examples**。
-3. 执行 **Tools → ZRAsset → 示例 → 构建并打开快速入门**，点击 Play，场景中会显示真实 AssetBundle 的加载结果。
+3. 执行 **ZRAsset → 示例 → 构建并打开快速入门**，点击 Play，场景中会显示真实 AssetBundle 的加载结果。
 
 示例已包含文本资源、构建配置和场景。手动配置和接入自己的资源见[快速入门](Documentation~/manual/quick-start.md)。
 

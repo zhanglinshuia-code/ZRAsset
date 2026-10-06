@@ -2,7 +2,7 @@
 
 首次接入使用 [PackageQuickStart](PackageQuickStart.cs)，步骤见[快速入门](../../Documentation~/manual/quick-start.md)。该示例采用命名 Package 和 Scope。
 
-从 Package Manager 导入 **Core examples** 后，执行 **Tools → ZRAsset → 示例 → 构建并打开快速入门**，然后点击 Play。随包的 `QuickStart` 目录已提供文本资源、构建配置和场景；构建使用独立包名 `zrasset-quickstart`。
+从 Package Manager 导入 **Core examples** 后，执行 **ZRAsset → 示例 → 构建并打开快速入门**，然后点击 Play。随包的 `QuickStart` 目录已提供文本资源、构建配置和场景；构建使用独立包名 `zrasset-quickstart`。
 
 | 示例 | 用途 |
 | --- | --- |

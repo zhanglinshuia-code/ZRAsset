@@ -28,8 +28,8 @@ namespace ZRAsset.Editor
         private MessageType m_messageType = MessageType.Info;
         private const int PageSize = 100;
 
-        [MenuItem("Tools/ZRAsset/资源收集")]
-        [MenuItem("Tools/ZRAsset/资源工作台")]
+        [MenuItem("ZRAsset/资源收集/打开资源工作台")]
+        [MenuItem("ZRAsset/资源工作台")]
         public static void Open()
         {
             ResourceBuildWindow window = GetWindow<ResourceBuildWindow>("ZRAsset 资源收集");

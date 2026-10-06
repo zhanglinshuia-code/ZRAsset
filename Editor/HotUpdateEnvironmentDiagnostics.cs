@@ -144,7 +144,7 @@ namespace ZRAsset.Editor
             return result;
         }
 
-        [MenuItem("Tools/ZRAsset/热更新/检查 HybridCLR 环境")]
+        [MenuItem("ZRAsset/热更新/检查 HybridCLR 环境")]
         public static void PrintReport()
         {
             Debug.Log(GetReport());

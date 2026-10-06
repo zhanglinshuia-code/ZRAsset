@@ -24,7 +24,7 @@ namespace ZRAsset.Editor
         private string m_report, m_message;
         private Vector2 m_scroll;
 
-        [MenuItem("Tools/ZRAsset/热更新/启动配置与就绪检查")]
+        [MenuItem("ZRAsset/热更新/启动配置与就绪检查")]
         public static void Open()
         {
             HotUpdateStartupWindow window = GetWindow<HotUpdateStartupWindow>("ZRAsset 热更接入");

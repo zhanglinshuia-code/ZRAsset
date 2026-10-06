@@ -41,7 +41,7 @@ namespace ZRAsset.Editor
             public string[] Notes;
         }
 
-        [MenuItem("Tools/ZRAsset/构建所选热更配置")]
+        [MenuItem("ZRAsset/构建所选热更配置")]
         public static void BuildSelected()
         {
             var config = Selection.activeObject as HotUpdateBuildConfig;
